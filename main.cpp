@@ -1,5 +1,5 @@
 #include <iostream>
-#inlcude<ctime>
+#include <ctime>
 using namespace std;
 
 class Goat{
@@ -29,15 +29,15 @@ public:
         }
         Goat(){
         
-            age = rand%15;
-            name = names[rand%15];
-            color = colors[rand%15];
+            age = rand()%15;
+            name = names[rand()%15];
+            color = colors[rand()%15];
 
         }
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
     void push_back(Goat goat) {
-        Node* newNode = new Node(value);
+        Node* newNode = new Node(goat);
         if (!tail)  // if there's no tail, the list is empty
             head = tail = newNode;
         else {
@@ -48,7 +48,7 @@ public:
     }
 
     void push_front(Goat goat) {
-        Node* newNode = new Node(value);
+        Node* newNode = new Goat(gaot);
         if (!head)  // if there's no head, the list is empty
             head = tail = newNode;
         else {
@@ -64,7 +64,7 @@ public:
             return;
         }
 
-        Node* newNode = new Node(value);
+        Node* newNode = new Goat(value);
         if (!head) {
             head = tail = newNode;
             return;
@@ -146,10 +146,10 @@ public:
 int main() {
     srand(time(0));
     DoublyLinkedList list;
-    int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
+    int size = rand() % (20-5+1) + 5;
 
     for (int i = 0; i < size; ++i)
-        list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+        list.push_back(rand() % (20-5+1) + 5);
     cout << "List forward: ";
     list.print();
 
