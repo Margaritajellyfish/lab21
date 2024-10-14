@@ -2,31 +2,19 @@
 #inlcude<ctime>
 using namespace std;
 
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
-
 class Goat{
 private:
     struct Node {
         int age;
         string name;
         string color;
-        string names[20] = {"Alice", "Bob", "Charlie", "David", "Eva", "Fiona", "George", "Hannah", "Isaac", "Julia", "Kevin", "Lily", "Mason", "Nina", "Oliver"};
-        string colors[20] = {"Red", "Blue", "Green", "Yellow", "Purple", "Orange", "Pink", "Black", "White", "Gray", "Teal", "Magenta", "Cyan", "Brown", "Lavender"};
+        string names[15] = {"Alice", "Bob", "Charlie", "David", "Eva", "Fiona", "George", "Hannah", "Isaac", "Julia", "Kevin", "Lily", "Mason", "Nina", "Oliver"};
+        string colors[15] = {"Red", "Blue", "Green", "Yellow", "Purple", "Orange", "Pink", "Black", "White", "Gray", "Teal", "Magenta", "Cyan", "Brown", "Lavender"};
 
-        Node* prev;
-        Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
-            data = val; 
-            prev = p;
-            next = n;
-        }
-        Goat(){
-            nrand = srand(time(0));
-            name = names[nrand%20];
-            crand = srand(time(0));
-            color = colors[crand%20];
+        Node* prev = nullptr;
+        Node* next = nullptr;
+        
 
-        }
     };
 
     Node* head;
@@ -34,9 +22,21 @@ private:
 
 public:
     // constructor
+    Goat(int a, string n, string c) {
+            age = a; 
+            name =n;
+            color = c;
+        }
+        Goat(){
+        
+            age = rand%15;
+            name = names[rand%15];
+            color = colors[rand%15];
+
+        }
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    void push_back(int value) {
+    void push_back(Goat goat) {
         Node* newNode = new Node(value);
         if (!tail)  // if there's no tail, the list is empty
             head = tail = newNode;
@@ -47,7 +47,7 @@ public:
         }
     }
 
-    void push_front(int value) {
+    void push_front(Goat goat) {
         Node* newNode = new Node(value);
         if (!head)  // if there's no head, the list is empty
             head = tail = newNode;
@@ -144,6 +144,7 @@ public:
 
 // Driver program
 int main() {
+    srand(time(0));
     DoublyLinkedList list;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
